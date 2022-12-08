@@ -137,7 +137,7 @@
           <p>Proyectos realizados en mi carrera como desarrollador de software</p>
         </div>
         {% if user.is_authenticated %}
-            <button href="#" class="btn btn-info">Añadir post</button>
+            <a href="{% url 'crear_item' %}" class="btn btn-info">Añadir post</a>
         {% else %}
             <h6>No puedes añadir posts</h6>
         {% endif %}

@@ -8,3 +8,6 @@ class Portafolio(models.Model):
     tags = models.CharField(max_length=200)
     repo_url = models.URLField('Repositorio GIT_URL')
     
+
+    def __str__(self):
+        return f"{self.id} - {self.title}"
