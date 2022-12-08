@@ -30,13 +30,17 @@
 </head>
 
 <body>
-    <main id="main">
+    
     {% include 'navbar.html' %}
 
-    {% block content %}
+  <!-- ======= Mobile nav toggle button ======= -->
+  <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>    
 
-    {% endblock %}
-    </main>
+  <!-- ======= Hero Section ======= -->
+  {% block content %}
+    
+  {% endblock %}  
+    
   <!-- Vendor JS Files -->
   <script src="{% static 'assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
   <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>

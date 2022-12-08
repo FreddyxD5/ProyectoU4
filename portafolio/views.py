@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
 from .models import Portafolio
 
 
@@ -27,3 +27,8 @@ def CreateItemPortafolio(request):
         else:
             return redirect('crear_item')
     return render(request, 'portafolio/crear_item_portafolio.html',context={'form':form})
+
+class ListarPortafolio(ListView):
+    model = Portafolio
+    template_name = 'portafolio/listar_items.html'
+    context_object_name = 'items_portafolio'
