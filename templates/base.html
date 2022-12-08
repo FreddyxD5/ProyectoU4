@@ -30,8 +30,9 @@
 </head>
 
 <body>
-    
-    {% include 'navbar.html' %}
+    {% block navbar %}
+      {% include 'navbar.html' %}
+    {% endblock %}
 
   <!-- ======= Mobile nav toggle button ======= -->
   <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>    
