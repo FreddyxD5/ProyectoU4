@@ -54,7 +54,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
      
-    # 'portafolio.middleware.IPIsValid',
+    'portafolio.middleware.IPIsValid',
 ]
 
 ROOT_URLCONF = 'ProyectoU4.urls'

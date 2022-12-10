@@ -20,3 +20,14 @@ class Perfil(models.Model):
         
     def __str__(self):
         return f'{self.user.username } - {self.nombres} - {self.apellidos}'
+
+
+class IpAddress(models.Model):
+    pub_date=models.DateTimeField('Fecha de peticion')
+    ip_address = models.GenericIPAddressField()
+
+    class Meta:
+        verbose_name = 'Direccion IP'
+        verbose_name_plural = 'Direcciones de IP'
+    def __str__(self):
+        return f"{self.ip_address}"
