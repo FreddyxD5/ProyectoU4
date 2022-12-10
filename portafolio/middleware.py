@@ -16,6 +16,10 @@ class IPIsValid:
         ip, is_routable = get_client_ip(request)
         print(type(ip))
         print(ip, is_routable)        
+        direcciones_ip = IpAddress.objects.filter(ip_address = ip ).exists()
+        if direcciones_ip:
+            return self.get_response(request)
+            
         if is_routable:
             IpAddress.objects.create(pub_date = datetime.date.today(), ip_address = ip)
         
