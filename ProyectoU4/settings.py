@@ -128,7 +128,7 @@ CSRF_TRUSTED_ORIGINS = ['https://proyectou4-production.up.railway.app']
 STATIC_URL = 'static/'
 STATIC_ROOT =os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
-    BASE_DIR / 'static'
+    BASE_DIR / 'staticfiles'
 ]
 
 # Default primary key field type
