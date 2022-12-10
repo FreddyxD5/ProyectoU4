@@ -3,8 +3,8 @@
 
   {% block navbar %}
   <header id="header">
+    
     <div class="d-flex flex-column">
-
       <div class="profile">
         <img src="https://www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png" alt="" class="img-fluid rounded-circle">
         <h1 class="text-light"><a href="index.html">Jesus More</a></h1>
@@ -20,8 +20,10 @@
       <nav id="navbar" class="nav-menu navbar">
         <ul>
           <li><a href="{% url 'index' %}" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Ir a la pagina principal</span></a></li>
-          <li><a href="#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Editar Perfil</span></a></li>          
-          <li><a href="#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Portafolio</span></a></li>                  
+          <li><a href="#" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Editar Perfil</span></a></li>          
+          <li><a href="{% url 'listar_proyectos' %}" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Portafolio</span></a></li>                  
+          <li><a href="{% url 'register' %}" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Registrar Usuario</span></a></li>                  
+          <li><a href="{% url 'logout' %}" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Cerrar Sesion</span></a></li>                  
         </ul>
       </nav><!-- .nav-menu -->
     </div>

@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
-from django.views.generic import TemplateView, ListView
+from django.urls import reverse_lazy
+from django.views.generic import TemplateView, ListView, DeleteView, CreateView
+from django.views import View
 from .models import Portafolio
 
 
@@ -10,25 +12,44 @@ from portafolio.forms import ProyectoForm
 class Index(TemplateView):
     template_name = 'index.html'
 
-def CreateItemPortafolio(request):
-    form = ProyectoForm()
+    def get_context_data(self, **kwargs):       
+        context = super().get_context_data(**kwargs)        
+        context['portafolio'] = Portafolio.objects.all()
+        return context
 
-    if request.method == 'POST':
-        form = ProyectoForm(request.POST)
-        if form.is_valid():
-            Portafolio.objects.create(
-                title = form.cleaned_data['title'],
-                description = form.cleaned_data['description'],
-                image_url = form.cleaned_data['image_url'],
-                tags = form.cleaned_data['tags'],
-                repo_url = form.cleaned_data['repo_url'],
-            )
-            return redirect('index')
-        else:
-            return redirect('crear_item')
-    return render(request, 'portafolio/crear_item_portafolio.html',context={'form':form})
 
-class ListarPortafolio(ListView):
+class CreatePortafolioView(CreateView):    
+    model = Portafolio
+    template_name = 'portafolio/crear_item_portafolio.html'
+    fields= ['title', 'description', 'tags', 'image_url', 'repo_url']
+    success_url = reverse_lazy('index')
+        
+
+# def create_item_portafolio(request):
+#     form = ProyectoForm()
+#     if request.method == 'POST':
+#         form = ProyectoForm(request.POST)        
+#         if form.is_valid():            
+#             Portafolio.objects.create(
+#                 title = form.cleaned_data['title'],
+#                 description = form.cleaned_data['description'],
+#                 image_url = form.cleaned_data['image_url'],
+#                 tags = form.cleaned_data['tags'],
+#                 repo_url = form.cleaned_data['repo_url'],
+#             )
+#             return redirect('index')
+#         else:
+#             return redirect('crear_item')
+#     return render(request, 'portafolio/crear_item_portafolio.html',context={'form':form})
+
+
+
+class EliminarItemPortafolio(DeleteView):
+    model = Portafolio
+    success_url = '/'
+
+from django.contrib.auth.mixins import LoginRequiredMixin
+class ListarPortafolio(ListView, LoginRequiredMixin):
     model = Portafolio
     template_name = 'portafolio/listar_items.html'
     context_object_name = 'items_portafolio'

@@ -1,9 +1,12 @@
 from django.urls import path
-from portafolio.views import Index, CreateItemPortafolio, ListarPortafolio
+from portafolio.views import (
+    Index, ListarPortafolio,
+    CreatePortafolioView, EliminarItemPortafolio)
 
 
 urlpatterns = [
     path('', Index.as_view(), name='index'),
-    path('crear_item', CreateItemPortafolio, name='crear_item'),
+    path('crear_item', CreatePortafolioView.as_view(),  name='crear_item'),
     path('listar_items', ListarPortafolio.as_view(), name='listar_proyectos'),
+    path('eliminar_item/<pk>', EliminarItemPortafolio.as_view(),name='eliminar_item')
 ]

@@ -1,0 +1,58 @@
+{% extends 'users/base.html' %}
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+{% block content %}
+<div class="container">
+    <section class="h-100" style="background-color: #eee;">
+       <div class="container py-5 h-100">
+         <div class="row d-flex justify-content-center align-items-center h-100">
+           <div class="col-xl-10">
+             <div class="card rounded-3 text-black">
+               <div class="row g-0">
+                 <div class="col-lg-6">
+                   <div class="card-body p-md-5 mx-md-4">
+                    {% if user.is_superuser %}                    
+                    <li style="color:#ea6c28; list-style:none;"><a href="{% url 'listar_proyectos' %}" class="nav-link scrollto"><i class="bx bx-home"></i> <span>Regresar al admin </span></a></li>
+                    {% endif %}
+     
+                     <div class="text-center">
+                       <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
+                         style="width: 185px;" alt="logo">
+                       <h4 class="mt-1 mb-5 pb-1">Bienvenido</h4>
+                     </div>
+
+     
+                     <form method="POST">                 
+                      {% csrf_token %}
+                      
+                      {{ form.as_p }}     
+                       <div class="d-flex align-items-center justify-content-center pb-4">                         
+                         <button type="submit" class="btn btn-outline-danger">Registrar Usuario</button>
+                       </div>
+     
+                     </form>
+     
+                   </div>
+                 </div>
+                 <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
+                   <div class="text-white px-3 py-4 p-md-5 mx-md-4">                 
+                   </div>
+                 </div>
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+     </section>
+    </div>            
+          <script>
+            const inputs = document.querySelectorAll("input");
+          
+            inputs.forEach((input) => input.classList.add("form-control"));
+          </script>
+{% endblock %}    
+

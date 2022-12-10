@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'portafolio.apps.PortafolioConfig',
-    'users.apps.UsersConfig',
+    'users.apps.UsersConfig',    
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -49,6 +50,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'portafolio.middleware.IPIsValid',
 ]
 
 ROOT_URLCONF = 'ProyectoU4.urls'
@@ -129,3 +131,5 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = 'index'
 LOGIN_URL = 'login'
+LOGOUT_REDIRECT_URL = 'login'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'   
