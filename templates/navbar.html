@@ -21,6 +21,10 @@
           <li><a href="#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Resumen</span></a></li>
           <li><a href="#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Portafolio</span></a></li>          
           <li><a href="#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contacto</span></a></li>
+          {% if not user.is_authenticated %}
+            <li><a href="{% url 'login' %}" class="nav-link scrollto"><i class="bx bx-user-circle"></i> <span>Login</span></a></li>
+          {% endif %}
+          
           {% if user.is_superuser%}
           <li><a href="{% url 'listar_proyectos' %}" class="nav-link scrollto"><i class="bx bx-category"></i> <span>Administrar portafolio</span></a></li>
           {% endif %}          
