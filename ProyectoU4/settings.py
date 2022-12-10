@@ -84,7 +84,7 @@ DATABASES = {
         'USER':'root',
         'PASSWORD':'fm5jTMgDeEr4EpTgQSMN',
         'HOST':'containers-us-west-143.railway.app',
-        'PORT':5589 
+        'PORT':'5589' 
     }
 }
 
