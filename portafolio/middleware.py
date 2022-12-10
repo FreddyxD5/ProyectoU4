@@ -14,9 +14,10 @@ class IPIsValid:
 
     def __call__(self, request):
         ip, is_routable = get_client_ip(request)
+        print(type(ip))
         print(ip, is_routable)        
         if is_routable:
-            IpAddress.objects.create(pub_date = datetime.date.today(), ip = ip)
+            IpAddress.objects.create(pub_date = datetime.date.today(), ip_address = ip)
         
         return self.get_response(request)
 
