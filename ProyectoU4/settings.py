@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 import os 
 import environ
+from dotenv import load_dotenv
 
 from pathlib import Path
 
@@ -20,6 +21,7 @@ env = environ.Env(
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+load_dotenv(os.path.join('BASE_DIR','.env'))
 
 
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
@@ -28,7 +30,7 @@ environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -90,12 +92,12 @@ WSGI_APPLICATION = 'ProyectoU4.wsgi.application'
 
 DATABASES = {
     'default': { 
-        'ENGINE': env('DATABASE_ENGINE'),
-        'NAME': env('DATABASE_NAME'),
-        'USER':env('DATABASE_USER'),
-        'PASSWORD':env('DATABASE_PASSWORD'),
-        'HOST':env('DATABASE_HOST'),
-        'PORT':env('DATABASE_PORT'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.getenv('DATABASE_NAME'),
+        'USER':os.getenv('DATABASE_USER'),
+        'PASSWORD':os.getenv('DATABASE_PASSWORD'),
+        'HOST':os.getenv('DATABASE_HOST'),
+        'PORT':os.getenv('DATABASE_PORT'),
     }
 }
 
