@@ -89,8 +89,8 @@ WSGI_APPLICATION = 'ProyectoU4.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
+    'default': { 
+        'ENGINE': env('DATABASE_ENGINE'),
         'NAME': env('DATABASE_NAME'),
         'USER':env('DATABASE_USER'),
         'PASSWORD':env('DATABASE_PASSWORD'),
