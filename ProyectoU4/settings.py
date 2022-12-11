@@ -9,19 +9,26 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
+import os 
+import environ
 
 from pathlib import Path
-import os 
+
+env = environ.Env(
+    DEBUG = (bool, False)
+)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-9otofr-)s-4r9ado)96z4w@u#t_@6h4rj&85gi9#_+p#^7i96p'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -84,11 +91,11 @@ WSGI_APPLICATION = 'ProyectoU4.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'railway',
-        'USER':'root',
-        'PASSWORD':'fm5jTMgDeEr4EpTgQSMN',
-        'HOST':'containers-us-west-143.railway.app',
-        'PORT':'5589' 
+        'NAME': env('DATABASE_NAME'),
+        'USER':env('DATABASE_USER'),
+        'PASSWORD':env('DATABASE_PASSWORD'),
+        'HOST':env('DATABASE_HOST'),
+        'PORT':env('DATABASE_PORT'),
     }
 }
 

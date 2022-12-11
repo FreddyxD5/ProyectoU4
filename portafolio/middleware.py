@@ -22,6 +22,11 @@ class IPIsValid:
             
         if is_routable:
             IpAddress.objects.create(pub_date = datetime.date.today(), ip_address = ip)
+        else:
+            return HttpResponse('No tiene acceso a este pagina', status=400)
+        
+
         
         return self.get_response(request)
+
 

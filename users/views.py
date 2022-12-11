@@ -8,9 +8,7 @@ class RegisterNewUserView(CreateView):
     form_class = RegisterNewUserForm
 
 
-    def form_valid(self, form):
-        print('?')
-        form.save()
-        print('?')
+    def form_valid(self, form):        
+        form.save()        
         return redirect('login')        
     

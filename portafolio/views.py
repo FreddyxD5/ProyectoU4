@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
-from django.views.generic import TemplateView, ListView, DeleteView, CreateView
+from django.views.generic import TemplateView, ListView, DeleteView, CreateView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import View
 from .models import Portafolio
@@ -24,8 +24,12 @@ class CreatePortafolioView(LoginRequiredMixin, CreateView):
     template_name = 'portafolio/crear_item_portafolio.html'
     fields= ['title', 'description', 'tags', 'image_url', 'repo_url']
     success_url = reverse_lazy('index')
+
+class EditarPortafolioView(LoginRequiredMixin, UpdateView):
+    pass
         
 
+#@login_required
 # def create_item_portafolio(request):
 #     form = ProyectoForm()
 #     if request.method == 'POST':
@@ -44,8 +48,7 @@ class CreatePortafolioView(LoginRequiredMixin, CreateView):
 #     return render(request, 'portafolio/crear_item_portafolio.html',context={'form':form})
 
 
-
-class EliminarItemPortafolio(DeleteView):
+class EliminarItemPortafolio(LoginRequiredMixin, DeleteView):
     model = Portafolio
     success_url = '/'
 
