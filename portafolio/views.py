@@ -26,8 +26,15 @@ class CreatePortafolioView(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy('index')
 
 class EditarPortafolioView(LoginRequiredMixin, UpdateView):
-    pass
+    model = Portafolio
+    template_name = 'portafolio/crear_item_portafolio.html'
+    fields= ['title', 'description', 'tags', 'image_url', 'repo_url']
+    success_url = reverse_lazy('listar_proyectos')
         
+
+def verdader():
+    return True
+
 
 #@login_required
 # def create_item_portafolio(request):
